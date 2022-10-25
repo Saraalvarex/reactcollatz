@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 
 export default class Collatz extends Component {
-cajanumero = React.createRef();
-
+//En este componente vamos a recibir props de numero
+    //Inicializar variables
+    constructor(props){
+      super(props);
+      console.log("Numero props: "+ props.numero);
+  }
 state = {
     numeros: []
 }
 
-recibirNumero = (e) => {
-    e.preventDefault();
- 
+recibirNumero = () => {
     console.log(this.cajanumero.current.value);
     // this.setState({
     //         numeros : [this.cajanumero.current.value]
@@ -29,6 +31,16 @@ recibirNumero = (e) => {
     this.setState({
         numeros : aux
     });
+}
+
+componentDidUpdate = (oldProps) => {
+  console.log("Actual Props " + this.props.numero)
+  console.log("Old Props "+ oldProps.numero)
+  //Solamente realizaremos cambios en la página
+  //cuando los props sean diferentes/han cambiado
+  if (this.props.numero!=oldProps.numero){
+      this.recibirNumero();
+  }
 }
 
   render() {

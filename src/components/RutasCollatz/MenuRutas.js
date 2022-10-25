@@ -9,7 +9,7 @@ export default class MenuRutas extends Component {
             <li><NavLink to="/">Home</NavLink></li>
         </ul>
         <ul>
-            <li><NavLink to="/Collatz">Collatz</NavLink></li>
+            <li><NavLink to="/Collatz/9">Collatz</NavLink></li>
         </ul>
         <ul>
             <li><NavLink to="*">NoMap</NavLink></li>
