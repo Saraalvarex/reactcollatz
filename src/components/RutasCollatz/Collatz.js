@@ -6,17 +6,13 @@ export default class Collatz extends Component {
     constructor(props){
       super(props);
       console.log("Numero props: "+ props.numero);
-  }
+    }
 state = {
     numeros: []
 }
 
 recibirNumero = () => {
-    console.log(this.cajanumero.current.value);
-    // this.setState({
-    //         numeros : [this.cajanumero.current.value]
-    // });
-    var num = parseInt(this.cajanumero.current.value);
+    var num = parseInt(this.props.numero);
     var aux=[];
 
     while (num !=1) {
@@ -26,8 +22,8 @@ recibirNumero = () => {
             num = num*3+1;
         }
         aux.push(num);
-        
     }
+    
     this.setState({
         numeros : aux
     });
@@ -46,21 +42,18 @@ componentDidUpdate = (oldProps) => {
   render() {
     return (
       <div>
-        <h1>Collatz</h1>
-        <form onSubmit={this.recibirNumero}>
-            <input type="number" ref={this.cajanumero} />
-            <br/>
-            <button>
-                Enviar datos
-            </button>
-        </form>
-        <ul>
+        <h1 style={{color: "blue"}}>Collatz {this.props.numero}</h1>
+        <table className='table table-bordered'>
+          <tbody>
         {
-           this.state.numeros.map((numero, index) => {
-             return (<li key={index}>{numero}</li>);
-             })
+            this.state.numeros.map((num, index) => {
+                return (<tr key={index}>
+                   <td> {num} </td>
+                </tr>)
+            })
         }
-        </ul>
+        </tbody>
+        </table>
       </div>
     )
   }

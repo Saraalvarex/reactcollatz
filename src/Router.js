@@ -9,7 +9,7 @@ import PageNotFound from './components/RutasCollatz/PageNotFound';
 export default class Router extends Component {
   render() {
 
-    function Collatz() {
+    function CollatzElement() {
         var {numero} = useParams();
         return <Collatz numero={numero}/>
     }
@@ -19,7 +19,7 @@ export default class Router extends Component {
         <MenuRutas/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path="/collatz/:numero" element={<Collatz/>}/>
+                <Route path="/collatz/:numero" element={<CollatzElement/>}/>
                 <Route path="*" element={<PageNotFound/>}/>
             </Routes>
         </BrowserRouter>
